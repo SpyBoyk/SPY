@@ -133,10 +133,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-default-key-for-dev
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '.onrender.com',   # Render apps automatically use *.onrender.com
-    'yourdomain.com',  # Replace with your custom domain if you add one
+ '*' # Replace with your custom domain if you add one
 ]
 
 # Application definition
