@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatAI - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a6cf7;
+            --primary-dark: #3b5be3;
+            --secondary: #f8f9fa;
+            --text-primary: #2d3748;
+            --text-secondary: #718096;
+            --border: #e2e8f0;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(120deg, #f0f4ff 0%, #e6f0ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text-primary);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .login-left {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .login-right {
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .brand-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 22px;
+        }
+
+        .brand-text {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .welcome-text {
+            margin-bottom: 50px;
+        }
+
+        .welcome-text h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .welcome-text p {
+            font-size: 17px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .features {
+            margin: 50px 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 20px;
+        }
+
+        .feature-text h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .feature-text p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .footer {
+            margin-top: auto;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header h1 {
+            font-size: 28px;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .login-header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .login-header a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-header a:hover {
+            text-decoration: underline;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .login-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+        }
+
+        .google-login-btn {
+            width: 100%;
+            padding: 16px;
+            background: white;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .google-login-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot-password a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .login-container {
+                flex-direction: column;
+                max-width: 500px;
+            }
+            
+            .login-left, .login-right {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-left, .login-right {
+                padding: 30px 20px;
+            }
+            
+            .brand-text {
+                font-size: 24px;
+            }
+            
+            .welcome-text h1 {
+                font-size: 26px;
+            }
+            
+            .login-header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <div class="brand-text">ChatAI</div>
+            </div>
+            
+            <div class="welcome-text">
+                <h1>Skip repetitive and manual sales-marketing tasks.</h1>
+                <p>Get highly productive through automation and save tons of time!</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Automation</h3>
+                        <p>Automate your sales and marketing workflows</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Productivity</h3>
+                        <p>Boost your team's productivity with smart tools</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Security</h3>
+                        <p>Enterprise-grade security for your data</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                © 2022 ChatAI. All rights reserved.
+            </div>
+        </div>
+        
+        <div class="login-right">
+            <div class="login-header">
+                <h1>Welcome Back!</h1>
+                <p>Don't have an account? <a href="#">Create a new account now</a>, it's FREE! Takes less than a minute.</p>
+            </div>
+            
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="hlsailm.ux@gmail.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" class="login-btn">Login Now</button>
+            </form>
+            
+            <button id="google-login-btn" class="google-login-btn">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+                    <path fill="#EA4335" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>
+                </svg>
+                Login with Google
+            </button>
+            
+            <div class="forgot-password">
+                <a href="#">Forget password? Click here</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('google-login-btn').addEventListener('click', function() {
+            // Show loading state
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting to Google...';
+            this.disabled = true;
+            
+            // Get Google OAuth URL from backend
+            fetch('/chat/api/login/google/')
+                .then(response => response.json())
+                .then(data => {
+                    window.location.href = data.auth_url;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    this.innerHTML = 'Error! Try again';
+                    setTimeout(() => {
+                        this.innerHTML = `
+                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+                                <path fill="#EA4335" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>
+                            </svg>
+                            Login with Google
+                        `;
+                        this.disabled = false;
+                    }, 2000);
+                });
+        });
+
+        // Form validation
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email && password) {
+                // Simulate form submission
+                const submitBtn = this.querySelector('.login-btn');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+                submitBtn.disabled = true;
+                
+                // In a real implementation, you would submit the form to your backend
+                setTimeout(() => {
+                    alert('Login functionality would be implemented here');
+                    submitBtn.innerHTML = 'Login Now';
+                    submitBtn.disabled = false;
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
